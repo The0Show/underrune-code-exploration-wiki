@@ -23,7 +23,7 @@ After seeing these two screens for myself, both in-game and through these videos
 After decompiling my data.win file, I was able to locate the script that controls this, `gml_Object_obj_roomofdog_Alarm_0`.
 
 {% code title="gml_Object_obj_roomofdog_Alarm_0" %}
-```javascript
+```gml
 caster_free(-3)
 visible = true
 type = floor(random(8))
@@ -57,7 +57,7 @@ Let's explore what each variant does, line-by-line.
 
 If the output of the random number generator (defined in the code as `type`) is not equal to 7, then this variant is displayed.
 
-```javascript
+```gml
 x = ((room_width / 2) - (sprite_width / 2))
 y = ((room_height / 2) - (sprite_height / 2))
 ```
@@ -70,7 +70,7 @@ $$
 
 After, we load the song, loop it with a random pitch, and then set the image speed to `0.15`.
 
-```javascript
+```gml
 thissong = caster_load("music/dance_of_dog.ogg")
 caster_loop(thissong, 1, (0.95 + random(0.1)))
 image_speed = 0.15
@@ -80,7 +80,7 @@ image_speed = 0.15
 
 If the output of the random number generator (defined in the code as `type`) is equal to 7, then this variant is displayed.
 
-```javascript
+```gml
 x = (room_width / 2)
 y = (room_height / 2)
 ```
@@ -93,13 +93,13 @@ $$
 
 After, we update the sprite index to be a sleeping dog instead of a dancing dog.
 
-```javascript
+```gml
 sprite_index = spr_tobdog_sleep_trash
 ```
 
 Finally, we load the song, loop it with a random pitch, and then set the image speed to `0.05`.
 
-```javascript
+```gml
 thissong = caster_load("music/sigh_of_dog.ogg")
 caster_loop(thissong, 1, (0.8 + random(0.2)))
 image_speed = 0.05
@@ -117,7 +117,7 @@ One way you could do this is by just removing the other variant from the code. I
 Comment out unwanted lines instead of fully deleting them (like I did), it will make not only switching variants, but resetting it a lot easier.
 {% endhint %}
 
-```javascript
+```gml
 caster_free(-3)
 visible = true
 image_xscale = 2
@@ -138,7 +138,7 @@ Here's the result:
 
 You could also just override the random number. On line 3, where the `type` variable is declared, replace `floor(random(8))` with 7 for the calm variant, or any other number for the dancing variant. You can also replace the values in the if statement to make it easier, like how I changed it to 1 instead of 7. This example only shows the dancing variant.
 
-```javascript
+```gml
 caster_free(-3)
 visible = true
 type = 0
@@ -177,7 +177,7 @@ Remember that in GameMaker Language, the number inserted into the `random` funct
 Also, remember to change the `if` statement accordingly!
 {% endhint %}
 
-```javascript
+```gml
 caster_free(-3)
 visible = true
 type = floor(random(2))
